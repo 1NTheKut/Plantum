@@ -20,8 +20,6 @@ public class JunkGravity : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate(){
-		if (attractorPlanet){
-			attractorPlanet.Attract (playerTransform);
-		}
+		
 	}
 }

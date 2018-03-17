@@ -4,17 +4,24 @@ using UnityEngine;
 
 public class PlanetScript : MonoBehaviour {
 
-	public float gravity = -12;
+	[SerializeField]
+	Transform planet;
 
-	// Use this for initialization
-	public void Attract(Transform playerTransform){
-		Vector3 gravityUp = (playerTransform.position - transform.position).normalized;
-		Vector3 localUp = playerTransform.up;
+	private Rigidbody2D rigidBody;
 
-		playerTransform.GetComponent<Rigidbody> ().AddForce (gravityUp * gravity);
+	[SerializeField]
+	float gravitationalPull;
 
-		Quaternion targetRotation = Quaternion.FromToRotation (localUp, gravityUp) * playerTransform.rotation;
-		playerTransform.rotation = Quaternion.Slerp (playerTransform.rotation, targetRotation, 50f * Time.deltaTime);
-	
+	void Start(){
+		rigidBody = GetComponent<Rigidbody2D> ();
 	}
+
+	void Update(){
+		Vector2 transformDifference = planet.transform.position - this.transform.position;
+		rigidBody.AddForce(transformDifference.normalized * gravitationalPull);
+		float angle = Mathf.Atan2 (transformDifference.x, transformDifference.y);
+
+		this.transform.rotation = Quaternion.AngleAxis (angle, transform.up);
+	}
+
 }
