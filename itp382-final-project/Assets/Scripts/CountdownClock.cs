@@ -20,7 +20,7 @@ public class CountdownClock : MonoBehaviour
 	void Update ()
 	{
 		timeLeft -= Time.deltaTime;
-		timerText.text = "Time Left: " + Math
+		timerText.text = "Time Left: " + timeLeft;
 
 	}
 }
