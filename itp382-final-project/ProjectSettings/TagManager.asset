@@ -42,3 +42,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Planet
+    uniqueID: 2906625813
+    locked: 0
+  - name: Rick
+    uniqueID: 1320232103
+    locked: 0
+  - name: Plant
+    uniqueID: 3545915565
+    locked: 0
