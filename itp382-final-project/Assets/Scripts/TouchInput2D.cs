@@ -6,19 +6,17 @@ using UnityEngine.UI;
 public class TouchInput2D : MonoBehaviour {
 
 	public GameObject treePreFab;
-	GameObject world;
 	GameObject player;
 	bool isFreePos;
 	bool canPlantSeed = false;
 	float timeSinceLastSeed;
-	float seedWaitTime = 6.0f;
+	float seedWaitTime = 3.0f;
 	public bool isPlanting; //used to see if player can move or not: need to get this variable in MovePlayer and have it hold movement for 3 seconds
 
 	[Header("Set Dynamically")]
 	public Text seedReadyText;
 	public Text seedText;
-	public int numSeeds;
-
+	public int numSeeds= 10;
 
 
 	// Use this for initialization
@@ -28,10 +26,8 @@ public class TouchInput2D : MonoBehaviour {
 			print ("Multitouch not supported");
 		}
 		isFreePos = true;
-		world = GameObject.Find ("Planet");
 		player = GameObject.Find("Player");
 
-		numSeeds = 10;
 		GameObject seedGO = GameObject.Find ("SeedCounter");
 		GameObject seedReadyGO = GameObject.Find ("SeedReady");
 		seedText = seedGO.GetComponent<Text> ();
@@ -76,9 +72,15 @@ public class TouchInput2D : MonoBehaviour {
 
 		}
 		isFreePos = true;
+
+		//***handle swiping to change direction***
+		//if swipe detected, then change direction
+		//Move2DPlayer moveScript = player.GetComponent<Move2DPlayer> ();
+		//moveScript.ChangeDirection();
 	}
 
 	void PlantTree() {
+		Move2DPlayer movePlayer = player.GetComponent<Move2DPlayer> ();
 		foreach(GameObject plantedTree in GameObject.FindGameObjectsWithTag("tree"))
 		{
 			//Debug.Log ("PlayerPos = " + player.transform.position.x + ", treePos = " + plantedTree.transform.position.x);
@@ -90,16 +92,16 @@ public class TouchInput2D : MonoBehaviour {
 		}
 		if (isFreePos) {
 			//If no tree there already, create another tree
-			isPlanting = true;
+			movePlayer.PlayerIsPlanting ();
 			Vector3 spawnPos = player.transform.position;
-			Quaternion spawnRotation = Quaternion.identity;
-			spawnPos.z += 1;
+			//Quaternion spawnRotation = Quaternion.identity;
+			//spawnPos.z += 1;
 			spawnPos.y -= .5f;
-			GameObject newCharacter = Instantiate(treePreFab, spawnPos, spawnRotation) as GameObject;
-			newCharacter.transform.LookAt(world.transform);
-			newCharacter.transform.Rotate(-90, 0, 0);
+			GameObject newPlant = Instantiate<GameObject> (treePreFab);
+			newPlant.transform.position = spawnPos;
 		}
 		numSeeds--;
+		movePlayer.PlayerDonePlanting ();
 		canPlantSeed = false;
 		timeSinceLastSeed = 0;
 		seedReadyText.text = "Generating seed.";

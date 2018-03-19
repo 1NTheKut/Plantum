@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212921196565544852}
   - component: {fileID: 50060448911177860}
   - component: {fileID: 60403301983126084}
+  - component: {fileID: 114660312968610192}
   m_Layer: 0
   m_Name: Garbage
   m_TagString: Untagged
@@ -194,6 +195,17 @@ PolygonCollider2D:
       - {x: 0.87, y: -2.35}
       - {x: 1.11, y: -2.34}
       - {x: 1.37, y: -2.32}
+--- !u!114 &114660312968610192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1424616995982154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f3efd363147524af58fb4b095cb98b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212921196565544852
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -225,8 +237,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -898386181
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 7894ef962153e42878072a6ea19760ce, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

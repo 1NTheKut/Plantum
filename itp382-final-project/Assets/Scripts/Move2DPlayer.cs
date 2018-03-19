@@ -4,41 +4,50 @@ using UnityEngine;
 
 public class Move2DPlayer : MonoBehaviour {
 
-	//speed that the player will go
-	public float moveSpeed = 300;
+	float dist;
+	float leftBorder;
+	float rightBorder;
+	public float moveSpeed = 2f;
 	public GameObject character;
-
-	private Rigidbody2D playerCharacter;
-	private float screenWidth;
+	public float leftAndRightEdge = 10f;
+	public bool isPlanting = false;
 
 	// Use this for initialization
 	void Start () {
-		screenWidth = Screen.width;
-		playerCharacter = character.GetComponent<Rigidbody2D> ();
+//		screenWidth = Screen.width;
+//		playerCharacter = character.GetComponent<Rigidbody2D> ();
+		dist = (transform.position - Camera.main.transform.position).z;
+		leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist)).x;
+		rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, dist)).x;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		int numTouches = 0;
 
-		while (numTouches < 0) {
-			if (Input.GetTouch (numTouches).position.x > (screenWidth / 2)) {
-				movePlayer (1.0f);
-			} if (Input.GetTouch (numTouches).position.x < (screenWidth / 2)){
-				movePlayer(-1.0F);
+		if (!isPlanting) {
+			Vector3 pos = transform.position;
+			pos.x += moveSpeed * Time.deltaTime;
+			transform.position = pos;
+
+			//change direction if borders hit
+			if (pos.x < leftBorder) {
+				ChangeDirection ();
+			} else if (pos.x > rightBorder) {
+				ChangeDirection ();
 			}
-			++numTouches;
 		}
 	}
 
-	void FixedUpdate(){
-		#if UNITY_EDITOR
-		movePlayer(Input.GetAxis("Horizontal"));
-		#endif 
+	void ChangeDirection() {
+		moveSpeed = moveSpeed * (-1);
 	}
-	private void movePlayer(float moveSideToSide){
-		playerCharacter.AddForce (new Vector2 (moveSideToSide * moveSpeed * Time.deltaTime, 0));
 
-	
+	public void PlayerIsPlanting() {
+		isPlanting = true;
 	}
+
+	public void PlayerDonePlanting() {
+		isPlanting = false;
+	}
+		
 }
