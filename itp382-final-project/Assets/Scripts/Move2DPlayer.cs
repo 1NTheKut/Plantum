@@ -38,7 +38,7 @@ public class Move2DPlayer : MonoBehaviour {
 		}
 	}
 
-	void ChangeDirection() {
+	public void ChangeDirection() {
 		moveSpeed = moveSpeed * (-1);
 	}
 
