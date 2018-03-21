@@ -11,6 +11,7 @@ public class TouchInput2D : MonoBehaviour {
 	bool canPlantSeed = false;
 	float timeSinceLastSeed;
 	float seedWaitTime = 3.0f;
+
 	public bool isPlanting; //used to see if player can move or not: need to get this variable in MovePlayer and have it hold movement for 3 seconds
 
 	[Header("Set Dynamically")]
@@ -18,10 +19,11 @@ public class TouchInput2D : MonoBehaviour {
 	//public Text seedText;
 	//public int numSeeds= 10;
 
+	public float sensitivity = 0.5f;
 	public float swipeThreshold;
 	private Vector2 startPos;
 
-	Move2DPlayer character;
+	Move2DPlayer moveCharacter;
 
 
 	// Use this for initialization
@@ -43,6 +45,8 @@ public class TouchInput2D : MonoBehaviour {
 
 		timeSinceLastSeed = 0;
 		isPlanting = false;
+
+		moveCharacter = player.GetComponent<Move2DPlayer> ();
 	}
 
 	// Update is called once per frame
@@ -59,34 +63,31 @@ public class TouchInput2D : MonoBehaviour {
 		}
 
 		int nbTouches = Input.touchCount;
-		if (nbTouches > 0) {
-			for (int i = 0; i < nbTouches; i++) {
-				Touch touch = Input.GetTouch (i);
 
-				if (touch.phase == TouchPhase.Began) {
-					//CheckSeeds ();
-					startPos = touch.position;
-					if (canPlantSeed) { //(numSeeds > 0 &&
-						PlantTree ();
-					}
-				} else if (touch.phase == TouchPhase.Ended) {
-					Move2DPlayer swipedPlayer = player.GetComponent<Move2DPlayer> ();
-					float swipteDist = (new Vector3 (touch.position.x, 0, 0) - new Vector3 (startPos.x, 0, 0)).magnitude;
-					if (swipteDist == swipeThreshold) {
-						float swipeValue = Mathf.Sign (touch.position.x - startPos.x);
-						if (swipeValue > 0) {				
-							swipedPlayer.ChangeDirection ();
-							Debug.Log ("Right");
-						} else if (swipeValue < 0) {
-							swipedPlayer.ChangeDirection ();
-							Debug.Log ("Left");
-						}
+		//check for moved or stationary finger
+		if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary) {
 
-					}
-				}
+			//check for change in direction every frame
+			Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
 
+			//if direction is greater than sensitivity (1.5), set the movement to right, also set mobileRight to true... this will allow movement with stationary finger
+			if(touchDeltaPosition.x > sensitivity){
+				moveCharacter.ChangeDirection ();
 			}
-		} else if (Input.GetMouseButtonDown (0)) {
+
+			//else check to see if direction of finger movement is less than -sensitivity (-1.5) if so set direction to left and mobileRight to false
+			else if(touchDeltaPosition.x < -sensitivity){
+				moveCharacter.ChangeDirection ();
+			}
+
+			//if touch direction is 0 (Finger NOT moving)
+			else if(touchDeltaPosition.x == 0){
+				if (canPlantSeed) { //(numSeeds > 0 &&
+					PlantTree ();
+				}
+			}
+		}
+		else if (Input.GetMouseButtonDown (0)) {
 			if (canPlantSeed) { //numSeeds > 0 && 
 				PlantTree ();
 			}
