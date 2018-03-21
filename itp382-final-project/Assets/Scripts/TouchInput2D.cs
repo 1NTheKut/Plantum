@@ -15,8 +15,8 @@ public class TouchInput2D : MonoBehaviour {
 
 	[Header("Set Dynamically")]
 	public Text seedReadyText;
-	public Text seedText;
-	public int numSeeds= 10;
+	//public Text seedText;
+	//public int numSeeds= 10;
 
 	public float swipeThreshold;
 	private Vector2 startPos;
@@ -34,10 +34,10 @@ public class TouchInput2D : MonoBehaviour {
 		isFreePos = true;
 		player = GameObject.Find("Player");
 
-		GameObject seedGO = GameObject.Find ("SeedCounter");
+		//GameObject seedGO = GameObject.Find ("SeedCounter");
+		//seedText = seedGO.GetComponent<Text> ();
+		//seedText.text = "Seeds Left: " + numSeeds.ToString ();
 		GameObject seedReadyGO = GameObject.Find ("SeedReady");
-		seedText = seedGO.GetComponent<Text> ();
-		seedText.text = "Seeds Left: " + numSeeds.ToString ();
 		seedReadyText = seedReadyGO.GetComponent<Text> ();
 		seedReadyText.text = "Generating seed.";
 
@@ -47,7 +47,7 @@ public class TouchInput2D : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		seedText.text = "Seeds Left: " + numSeeds.ToString ();
+		//seedText.text = "Seeds Left: " + numSeeds.ToString ();
 
 		//Timer:
 		timeSinceLastSeed += Time.deltaTime;
@@ -66,7 +66,7 @@ public class TouchInput2D : MonoBehaviour {
 				if (touch.phase == TouchPhase.Began) {
 					//CheckSeeds ();
 					startPos = touch.position;
-					if (numSeeds > 0 && canPlantSeed) {
+					if (canPlantSeed) { //(numSeeds > 0 &&
 						PlantTree ();
 					}
 				} else if (touch.phase == TouchPhase.Ended) {
@@ -87,7 +87,7 @@ public class TouchInput2D : MonoBehaviour {
 
 			}
 		} else if (Input.GetMouseButtonDown (0)) {
-			if (numSeeds > 0 && canPlantSeed) {
+			if (canPlantSeed) { //numSeeds > 0 && 
 				PlantTree ();
 			}
 
@@ -118,7 +118,7 @@ public class TouchInput2D : MonoBehaviour {
 			GameObject newPlant = Instantiate<GameObject> (treePreFab);
 			newPlant.transform.position = spawnPos;
 		}
-		numSeeds--;
+		//numSeeds--;
 		movePlayer.PlayerDonePlanting ();
 		canPlantSeed = false;
 		timeSinceLastSeed = 0;

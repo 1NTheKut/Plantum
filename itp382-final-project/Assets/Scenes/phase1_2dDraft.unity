@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -433,6 +433,7 @@ GameObject:
   - component: {fileID: 533614454}
   - component: {fileID: 533614456}
   - component: {fileID: 533614457}
+  - component: {fileID: 533614458}
   m_Layer: 0
   m_Name: planet_ground
   m_TagString: ground
@@ -542,6 +543,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!95 &533614458
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 533614453}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e321abeaeb5ef4545bbd096d86526514, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!1 &683007557
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,9 +984,7 @@ MonoBehaviour:
   treePreFab: {fileID: 1646576508420260, guid: 462310997e53540dd9aefec6e1efd3b0, type: 2}
   player: {fileID: 1176807550}
   isPlanting: 0
-  seedReadyText: {fileID: 0}
-  seedText: {fileID: 0}
-  numSeeds: 10
+  seedReadyText: {fileID: 1992207242}
   swipeThreshold: 0
 --- !u!1 &1691775992
 GameObject:
@@ -1048,7 +1064,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1853538616
 RectTransform:
   m_ObjectHideFlags: 0
