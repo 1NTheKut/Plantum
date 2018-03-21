@@ -23,7 +23,7 @@ public class CountdownClock : MonoBehaviour
 		timeLeft -= Time.deltaTime;
 		timerText.text = "Time Left: " + timeLeft.ToString("f2");
 		if (timeLeft <= 0) {
-			SceneManager.LoadScene("LoseScene");
+			SceneManager.LoadScene("WinScene");
 		}
 
 	}
