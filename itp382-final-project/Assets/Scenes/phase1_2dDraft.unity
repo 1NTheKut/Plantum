@@ -963,8 +963,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ced3892e1ab4b5188762f033a57b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treePreFab: {fileID: 0}
-  player: {fileID: 0}
+  treePreFab: {fileID: 1646576508420260, guid: 462310997e53540dd9aefec6e1efd3b0, type: 2}
+  player: {fileID: 1176807550}
   isPlanting: 0
   seedReadyText: {fileID: 0}
   seedText: {fileID: 0}
