@@ -88,11 +88,11 @@ public class TouchInput2D : MonoBehaviour {
 			}
 		}
 		else if (Input.GetMouseButtonDown (0)) {
-			if (canPlantSeed) { //numSeeds > 0 && 
+			if (canPlantSeed) { //numSeeds > 0 &&
 				PlantTree ();
 			}
 
-		} 
+		}
 		isFreePos = true;
 
 		//***handle swiping to change direction***
@@ -118,6 +118,7 @@ public class TouchInput2D : MonoBehaviour {
 			spawnPos.y -= .5f;
 			GameObject newPlant = Instantiate<GameObject> (treePreFab);
 			newPlant.transform.position = spawnPos;
+			PlanetHealthManager.treePreFab.Add (newPlant);
 		}
 		//numSeeds--;
 		movePlayer.PlayerDonePlanting ();
