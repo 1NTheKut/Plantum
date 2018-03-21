@@ -32,6 +32,7 @@ public class Garbage : MonoBehaviour {
 			SceneManager.LoadScene ("LoseScene");
 			//comment this out if you don't want game to end when space junk hits player
 		} else if (collidedWith.tag == "tree") {
+			PlanetHealthManager.treePreFab.Remove (collidedWith);
 			Destroy (this.gameObject);
 			Destroy (collidedWith);
 		}

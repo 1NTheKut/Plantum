@@ -21,6 +21,8 @@ public class TouchInput2D : MonoBehaviour {
 	public float swipeThreshold;
 	private Vector2 startPos;
 
+	//bool treesExist = false;
+
 	Move2DPlayer character;
 
 
@@ -117,6 +119,7 @@ public class TouchInput2D : MonoBehaviour {
 			spawnPos.y -= .5f;
 			GameObject newPlant = Instantiate<GameObject> (treePreFab);
 			newPlant.transform.position = spawnPos;
+			PlanetHealthManager.treePreFab.Add (newPlant);
 		}
 		numSeeds--;
 		movePlayer.PlayerDonePlanting ();
