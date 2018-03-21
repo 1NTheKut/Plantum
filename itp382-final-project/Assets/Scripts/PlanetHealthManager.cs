@@ -8,16 +8,14 @@ public class PlanetHealthManager : MonoBehaviour {
 
 	public static List<GameObject> treePreFab = new List<GameObject>();
 
-	//GameObject planetGO = GameObject.Find("planet_ground");
-
-	//Animator anim = planetGO.GetComponent<Animator>();
-
+	GameObject planetGO;
 	float timeLeft = 5f;
 	public Text timerText;
 
 	// Use this for initialization
 	void Start () {
-		
+
+		planetGO = GameObject.Find("planet_ground");
 		GameObject timerGO = GameObject.Find ("PlanetHealth");
 		timerText = timerGO.GetComponent<Text> ();
 	}
@@ -27,18 +25,20 @@ public class PlanetHealthManager : MonoBehaviour {
 		//checkPlanetHealth ();
 		if (treePreFab.Count > 0) {
 			//treesExist = true;
-			//anim.SetBool("IsDying", false);
 			timeLeft = 5f;
 			timerText.text = "Planet Dies In";
-			Debug.Log (treePreFab.Count);
+			planetGO.GetComponent<Animator> ().SetBool ("IsDying", false);
+			//anim.SetBool("IsDying", false);
 		} else {
 			//anim.SetBool ("IsDying", true);
 			timeLeft -= Time.deltaTime;
 			timerText.text = "Planet Dies In " + timeLeft.ToString("f2");
+			planetGO.GetComponent<Animator> ().SetBool ("IsDying", true);
+			//anim.SetBool ("IsDying", true);
 			if (timeLeft <= 0) {
 				SceneManager.LoadScene ("LoseScene");
 			}
-			Debug.Log (treePreFab.Count);
+
 		}
 	}
 		
