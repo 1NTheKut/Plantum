@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33146380113c749d3baa507821641ae7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsBetweenJunkDrop: 4
+  secondsBetweenJunkDrop: 2
   junkPreFab: {fileID: 1424616995982154, guid: 53f5552214e0a4d75ac2f8db37096c77, type: 2}
   cam: {fileID: 411903499}
   minJunkSize: 0.1
@@ -347,7 +347,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeLeft: 60
-  timerText: {fileID: 441843575}
+  timerText: {fileID: 0}
 --- !u!1 &441843573
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,8 +380,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 90}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -252.17052, y: 538.75275}
+  m_SizeDelta: {x: 225.2, y: 51.806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &441843575
 MonoBehaviour:
@@ -907,7 +907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   planet: {fileID: 0}
-  gravitationalPull: 30
+  gravitationalPull: 0
 --- !u!114 &1176807556
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -920,7 +920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  character: {fileID: 1176807550}
+  character: {fileID: 0}
   leftAndRightEdge: 10
   isPlanting: 0
 --- !u!1 &1588920152
@@ -963,11 +963,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1ced3892e1ab4b5188762f033a57b71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  treePreFab: {fileID: 1646576508420260, guid: 462310997e53540dd9aefec6e1efd3b0, type: 2}
+  treePreFab: {fileID: 0}
+  player: {fileID: 0}
   isPlanting: 0
-  seedReadyText: {fileID: 1992207242}
-  seedText: {fileID: 1853538617}
+  seedReadyText: {fileID: 0}
+  seedText: {fileID: 0}
   numSeeds: 10
+  swipeThreshold: 0
 --- !u!1 &1691775992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,8 +1064,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 50}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: -284.78, y: 493}
+  m_SizeDelta: {x: 160, y: 39.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1853538617
 MonoBehaviour:
@@ -1136,7 +1138,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -150, y: 130}
+  m_AnchoredPosition: {x: -284.7849, y: 598.5383}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1992207242

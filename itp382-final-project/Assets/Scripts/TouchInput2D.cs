@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TouchInput2D : MonoBehaviour {
 
 	public GameObject treePreFab;
-	GameObject player;
+	public GameObject player;
 	bool isFreePos;
 	bool canPlantSeed = false;
 	float timeSinceLastSeed;
@@ -18,9 +18,15 @@ public class TouchInput2D : MonoBehaviour {
 	public Text seedText;
 	public int numSeeds= 10;
 
+	public float swipeThreshold;
+	private Vector2 startPos;
+
+	Move2DPlayer character;
+
 
 	// Use this for initialization
 	void Start () {
+		//begin delay
 		bool supportsMultiTouch = Input.multiTouchEnabled;
 		if (!supportsMultiTouch) {
 			print ("Multitouch not supported");
@@ -59,10 +65,25 @@ public class TouchInput2D : MonoBehaviour {
 
 				if (touch.phase == TouchPhase.Began) {
 					//CheckSeeds ();
+					startPos = touch.position;
 					if (numSeeds > 0 && canPlantSeed) {
 						PlantTree ();
 					}
-				} 
+				} else if (touch.phase == TouchPhase.Ended) {
+					Move2DPlayer swipedPlayer = player.GetComponent<Move2DPlayer> ();
+					float swipteDist = (new Vector3 (touch.position.x, 0, 0) - new Vector3 (startPos.x, 0, 0)).magnitude;
+					if (swipteDist == swipeThreshold) {
+						float swipeValue = Mathf.Sign (touch.position.x - startPos.x);
+						if (swipeValue > 0) {				
+							swipedPlayer.ChangeDirection ();
+							Debug.Log ("Right");
+						} else if (swipeValue < 0) {
+							swipedPlayer.ChangeDirection ();
+							Debug.Log ("Left");
+						}
+
+					}
+				}
 
 			}
 		} else if (Input.GetMouseButtonDown (0)) {
@@ -70,7 +91,7 @@ public class TouchInput2D : MonoBehaviour {
 				PlantTree ();
 			}
 
-		}
+		} 
 		isFreePos = true;
 
 		//***handle swiping to change direction***
@@ -91,11 +112,8 @@ public class TouchInput2D : MonoBehaviour {
 			}
 		}
 		if (isFreePos) {
-			//If no tree there already, create another tree
-			movePlayer.PlayerIsPlanting ();
+			StartCoroutine(movePlayer.PlayerIsPlanting ());
 			Vector3 spawnPos = player.transform.position;
-			//Quaternion spawnRotation = Quaternion.identity;
-			//spawnPos.z += 1;
 			spawnPos.y -= .5f;
 			GameObject newPlant = Instantiate<GameObject> (treePreFab);
 			newPlant.transform.position = spawnPos;

@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Garbage : MonoBehaviour {
 
@@ -27,7 +29,8 @@ public class Garbage : MonoBehaviour {
 		} else if (collidedWith.tag == "Player") {
 			//Debug.Log("Hit player");
 			Destroy (this.gameObject);
-			Application.LoadLevel ("LoseScene"); //comment this out if you don't want game to end when space junk hits player
+			SceneManager.LoadScene ("LoseScene");
+			//comment this out if you don't want game to end when space junk hits player
 		} else if (collidedWith.tag == "tree") {
 			Destroy (this.gameObject);
 			Destroy (collidedWith);
