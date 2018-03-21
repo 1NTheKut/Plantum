@@ -37,6 +37,7 @@ public class InputManager : MonoBehaviour {
 		} else if (Input.GetMouseButtonDown (0)) {
 			PlantTree ();
 
+
 		}
 		isFreePos = true;
 	}

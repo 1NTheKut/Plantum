@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class TouchInput2D : MonoBehaviour {
 
 	public GameObject treePreFab;
-	GameObject player;
+	public GameObject player;
 	bool isFreePos;
 	bool canPlantSeed = false;
 	float timeSinceLastSeed;
@@ -21,6 +21,7 @@ public class TouchInput2D : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		//begin delay
 		bool supportsMultiTouch = Input.multiTouchEnabled;
 		if (!supportsMultiTouch) {
 			print ("Multitouch not supported");
@@ -91,11 +92,8 @@ public class TouchInput2D : MonoBehaviour {
 			}
 		}
 		if (isFreePos) {
-			//If no tree there already, create another tree
-			movePlayer.PlayerIsPlanting ();
+			StartCoroutine(movePlayer.PlayerIsPlanting ());
 			Vector3 spawnPos = player.transform.position;
-			//Quaternion spawnRotation = Quaternion.identity;
-			//spawnPos.z += 1;
 			spawnPos.y -= .5f;
 			GameObject newPlant = Instantiate<GameObject> (treePreFab);
 			newPlant.transform.position = spawnPos;

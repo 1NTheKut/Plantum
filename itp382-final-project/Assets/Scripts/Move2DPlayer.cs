@@ -7,6 +7,7 @@ public class Move2DPlayer : MonoBehaviour {
 	float dist;
 	float leftBorder;
 	float rightBorder;
+	float timer;
 	public float moveSpeed = 2f;
 	public GameObject character;
 	public float leftAndRightEdge = 10f;
@@ -23,7 +24,7 @@ public class Move2DPlayer : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		timer += Time.deltaTime;
 		if (!isPlanting) {
 			Vector3 pos = transform.position;
 			pos.x += moveSpeed * Time.deltaTime;
@@ -35,15 +36,19 @@ public class Move2DPlayer : MonoBehaviour {
 			} else if (pos.x > rightBorder) {
 				ChangeDirection ();
 			}
-		}
+		} 
+			
 	}
 
 	public void ChangeDirection() {
 		moveSpeed = moveSpeed * (-1);
 	}
 
-	public void PlayerIsPlanting() {
+	public IEnumerator PlayerIsPlanting() {
 		isPlanting = true;
+		moveSpeed = 0f;
+		yield return new WaitForSeconds (1f);
+		moveSpeed = 5f;
 	}
 
 	public void PlayerDonePlanting() {
