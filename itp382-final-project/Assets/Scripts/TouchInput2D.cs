@@ -65,23 +65,27 @@ public class TouchInput2D : MonoBehaviour {
 		int nbTouches = Input.touchCount;
 
 		//check for moved or stationary finger
-		if(Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Moved || Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Stationary) {
+		if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Moved) {
 
 			//check for change in direction every frame
-			Vector2 touchDeltaPosition = Input.GetTouch(0).deltaPosition;
+			Vector2 touchDeltaPosition = Input.GetTouch (0).deltaPosition;
 
 			//if direction is greater than sensitivity (1.5), set the movement to right, also set mobileRight to true... this will allow movement with stationary finger
-			if(touchDeltaPosition.x > sensitivity){
+			if (touchDeltaPosition.y > sensitivity) {
 				moveCharacter.ChangeDirection ();
 			}
 
 			//else check to see if direction of finger movement is less than -sensitivity (-1.5) if so set direction to left and mobileRight to false
-			else if(touchDeltaPosition.x < -sensitivity){
+			else if (touchDeltaPosition.y < -sensitivity) {
 				moveCharacter.ChangeDirection ();
 			}
+				
+		} else if (Input.touchCount > 0 && Input.GetTouch (0).phase == TouchPhase.Stationary) {
+			//check for change in direction every frame
+			Vector2 touchDeltaPosition = Input.GetTouch (0).deltaPosition;
 
 			//if touch direction is 0 (Finger NOT moving)
-			else if(touchDeltaPosition.x == 0){
+			if (touchDeltaPosition.y == 0) {
 				if (canPlantSeed) { //(numSeeds > 0 &&
 					PlantTree ();
 				}
