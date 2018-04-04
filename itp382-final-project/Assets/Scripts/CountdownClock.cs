@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CountdownClock : MonoBehaviour
 {
-	public float timeLeft = 60f;
+	public float timeLeft = 20f;
 	public Text timerText;
 
 	// Use this for initialization
@@ -19,7 +19,6 @@ public class CountdownClock : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-
 		timeLeft -= Time.deltaTime;
 		timerText.text = "Time Left: " + timeLeft.ToString("f2");
 		if (timeLeft <= 0) {
