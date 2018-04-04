@@ -57,11 +57,11 @@ public class Move2DPlayer : MonoBehaviour {
 
 			//change direction if borders hit
 			if (character.position.x < leftBorder) {
-				ChangeDirection (1.0f);
-				Debug.Log ("HIT LEFT");
+				moveCharacter (1.0f);
+				//Debug.Log ("HIT LEFT");
 			} else if (character.position.x > rightBorder) {
-				ChangeDirection (-1.0f);
-				Debug.Log ("HIT RIGHT");
+				moveCharacter (-1.0f);
+				//Debug.Log ("HIT RIGHT");
 			}
 		}
 	}
