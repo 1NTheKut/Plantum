@@ -23,14 +23,14 @@ public class TouchInput2D : MonoBehaviour {
 
 	Move2DPlayer moveCharacter;
 
-	private float ScreenWidth;
+	//private float ScreenWidth;
 
 	public Button plantButton;
 
 	// Use this for initialization
 	void Start () {
 		//begin delay
-		ScreenWidth = Screen.width;
+		//ScreenWidth = Screen.width;
 		bool supportsMultiTouch = Input.multiTouchEnabled;
 		if (!supportsMultiTouch) {
 			print ("Multitouch not supported");
@@ -38,9 +38,7 @@ public class TouchInput2D : MonoBehaviour {
 		isFreePos = true;
 		player = GameObject.Find("Player");
 
-		//GameObject seedGO = GameObject.Find ("SeedCounter");
-		//seedText = seedGO.GetComponent<Text> ();
-		//seedText.text = "Seeds Left: " + numSeeds.ToString ();
+
 		GameObject seedReadyGO = GameObject.Find ("SeedReady");
 		seedReadyText = seedReadyGO.GetComponent<Text> ();
 		seedReadyText.text = "Generating seed.";
@@ -63,6 +61,52 @@ public class TouchInput2D : MonoBehaviour {
 			//change text
 			seedReadyText.text = "Seed Ready to Plant.";
 		}
+
+
+		Button plant = plantButton.GetComponent<Button> ();
+			if (canPlantSeed) { //numSeeds > 0 &&
+			 plant.onClick.AddListener (PlantTree);
+				//PlantTree ();
+			}
+
+//
+//		}
+		isFreePos = true;
+
+	}
+
+	void FixedUpdate(){
+		#if UNITY_EDITOR
+		moveCharacter.ChangeDirection(Input.GetAxis("Horizontal"));
+		#endif
+
+	}
+
+	void PlantTree() {
+		foreach(GameObject plantedTree in GameObject.FindGameObjectsWithTag("tree"))
+		{
+			if(Mathf.Round(player.transform.position.x) == Mathf.Round(plantedTree.transform.position.x))
+			{
+				isFreePos = false;
+			}
+		}
+		if (isFreePos) {
+			StartCoroutine(moveCharacter.PlayerIsPlanting ());
+			Vector3 spawnPos = player.transform.position;
+			spawnPos.y -= .5f;
+			GameObject newPlant = Instantiate<GameObject> (treePreFab);
+			newPlant.transform.position = spawnPos;
+			PlanetHealthManager.treePreFab.Add (newPlant);
+		}
+		//numSeeds--;
+		moveCharacter.PlayerDonePlanting ();
+		canPlantSeed = false;
+		timeSinceLastSeed = 0;
+		seedReadyText.text = "Generating seed.";
+
+		Debug.Log ("Planted");
+	}
+}
 
 //		int i = 0;
 //
@@ -104,53 +148,3 @@ public class TouchInput2D : MonoBehaviour {
 //				}
 //			}
 //		}
-		Button plant = plantButton.GetComponent<Button> ();
-			if (canPlantSeed) { //numSeeds > 0 &&
-			 plant.onClick.AddListener (PlantTree);
-				//PlantTree ();
-			}
-
-
-
-
-//
-//		}
-		isFreePos = true;
-
-	}
-
-	void FixedUpdate(){
-		#if UNITY_EDITOR
-		moveCharacter.ChangeDirection(Input.GetAxis("Horizontal"));
-		#endif
-
-	}
-
-	void PlantTree() {
-		Move2DPlayer movePlayer = player.GetComponent<Move2DPlayer> ();
-		foreach(GameObject plantedTree in GameObject.FindGameObjectsWithTag("tree"))
-		{
-			//Debug.Log ("PlayerPos = " + player.transform.position.x + ", treePos = " + plantedTree.transform.position.x);
-			if(Mathf.Round(player.transform.position.x) == Mathf.Round(plantedTree.transform.position.x))
-			{
-				//Debug.Log ("Found tree");
-				isFreePos = false;
-			}
-		}
-		if (isFreePos) {
-			StartCoroutine(movePlayer.PlayerIsPlanting ());
-			Vector3 spawnPos = player.transform.position;
-			spawnPos.y -= .5f;
-			GameObject newPlant = Instantiate<GameObject> (treePreFab);
-			newPlant.transform.position = spawnPos;
-			PlanetHealthManager.treePreFab.Add (newPlant);
-		}
-		//numSeeds--;
-		movePlayer.PlayerDonePlanting ();
-		canPlantSeed = false;
-		timeSinceLastSeed = 0;
-		seedReadyText.text = "Generating seed.";
-
-		Debug.Log ("Planted");
-	}
-}
