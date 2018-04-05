@@ -11,6 +11,7 @@ public class JunkGenerator : MonoBehaviour {
 
 	[SerializeField]
 	private GameObject junkPreFab;
+	public Sprite[] sprites; //TO DO: use this instead of prefab? maybe create an array of prefabs instead
 
 	[SerializeField]
 	private Camera cam;
