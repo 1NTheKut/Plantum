@@ -4,21 +4,22 @@ using UnityEngine;
 
 public class JunkGenerator : MonoBehaviour {
 
-	public float secondsBetweenJunkDrop = 2f;
+	public float secondsBetweenJunkDrop = 3f;
 	Vector3 dropPos;
 	Vector3 scale = Vector3.one;
 	float timeLeft;
 
 	[SerializeField]
 	private GameObject junkPreFab;
-	public Sprite[] sprites; //TO DO: use this instead of prefab? maybe create an array of prefabs instead
+	public Sprite[] garbageSprites;
+	int spriteRandomizer;
 
 	[SerializeField]
 	private Camera cam;
 
 	[SerializeField]
-	private float minJunkSize = 0.1f;
-	private float maxJunkSize = 0.35f;
+	private float minJunkSize = 0.4f;
+	private float maxJunkSize = 0.9f;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +30,7 @@ public class JunkGenerator : MonoBehaviour {
 	void Update(){
 		CountdownClock countdown = Camera.main.GetComponent<CountdownClock> ();
 		timeLeft = countdown.timeLeft;
-		secondsBetweenJunkDrop = timeLeft/60 + .2f;
+		secondsBetweenJunkDrop = timeLeft/60 + .5f;
 	}
 
 
@@ -37,6 +38,10 @@ public class JunkGenerator : MonoBehaviour {
 		dropPos.x = Random.Range (-8, 8);
 		dropPos.y = 9;
 		GameObject newJunk = Instantiate<GameObject> (junkPreFab);
+		spriteRandomizer = Random.Range (0,5);
+		if (spriteRandomizer < garbageSprites.Length && spriteRandomizer >= 0) {
+			newJunk.GetComponent<SpriteRenderer>().sprite = garbageSprites[spriteRandomizer];
+		}
 
 		float randSize = Random.Range (minJunkSize, maxJunkSize);
 		scale = new Vector3(randSize, randSize, 0);

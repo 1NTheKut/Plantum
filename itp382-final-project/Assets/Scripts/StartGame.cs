@@ -8,6 +8,7 @@ public class StartGame : MonoBehaviour {
 	}
 
 	public void LoadLevel() {
-		SceneManager.LoadScene("phase1_2dDraft");
+		//TO DO: Make an switch statement to load scene
+		SceneManager.LoadScene("Level1");
 	}
 }

@@ -10,18 +10,22 @@ public class Move2DPlayer : MonoBehaviour {
 	float rightBorder;
 	float timer;
 //	float moveSpeed = 100.0f;
-	public Rigidbody2D character;
+//	public 
 	public float leftAndRightEdge = 10f;
 	public bool isPlanting = false;
 
 	public Button left;
 	public Button right;
 
+	GameObject player;
+	public Rigidbody2D character;
+
 	// Use this for initialization
 	void Start () {
-//		playerCharacter = character.GetComponent<Rigidbody2D> ();
 		//edits for making buttons to change direction
-		character = character.GetComponent<Rigidbody2D>();
+		player = GameObject.Find("Player");
+		character = player.GetComponent<Rigidbody2D>();
+
 		//end edits
 		dist = (transform.position - Camera.main.transform.position).z;
 		leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist)).x;
@@ -35,10 +39,14 @@ public class Move2DPlayer : MonoBehaviour {
 	}
 
 	void MoveLeft(){
+		player.GetComponent<Animator> ().SetBool ("isWalking", true);
+		player.GetComponent<Animator> ().SetBool ("isPlanting", false);
 		moveCharacter (-1.0f);
 	}
 
 	void MoveRight(){
+		player.GetComponent<Animator> ().SetBool ("isWalking", true);
+		player.GetComponent<Animator> ().SetBool ("isPlanting", false);
 		moveCharacter (1.0f);	
 	}
 	
@@ -67,6 +75,7 @@ public class Move2DPlayer : MonoBehaviour {
 	}
 
 	public void moveCharacter(float input){
+		//player.GetComponent<Animator> ().SetBool ("isWalking", true);
 		character.velocity = new Vector2 (input * 100.0f * Time.deltaTime, 0);
 	}
 
@@ -77,6 +86,8 @@ public class Move2DPlayer : MonoBehaviour {
 
 	public IEnumerator PlayerIsPlanting() {
 		isPlanting = true;
+
+		//Debug.Log ("isPlanting TRUE");
 		//moveSpeed = 0f;
 		character.AddForce(new Vector2 (0 * Time.deltaTime, 0));
 		yield return new WaitForSeconds (3.0f);
@@ -87,7 +98,8 @@ public class Move2DPlayer : MonoBehaviour {
 	public void PlayerDonePlanting() {
 		isPlanting = false;
 		character.velocity = new Vector2 (0* Time.deltaTime, 0);
-
+//		player.GetComponent<Animator> ().SetBool ("isWalking", true);
+//		player.GetComponent<Animator> ().SetBool ("isPlanting", false);
 	}
 		
 }
