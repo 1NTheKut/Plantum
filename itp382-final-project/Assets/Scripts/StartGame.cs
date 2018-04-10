@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class StartGame : MonoBehaviour {
@@ -8,6 +9,6 @@ public class StartGame : MonoBehaviour {
 	}
 
 	public void LoadLevel() {
-		SceneManager.LoadScene("phase1_2dDraft");
+		SceneManager.LoadScene("LaunchScene");
 	}
 }

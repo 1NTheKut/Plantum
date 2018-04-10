@@ -51,17 +51,11 @@ public class Move2DPlayer : MonoBehaviour {
 
 		timer += Time.deltaTime;
 		if (!isPlanting) {
-//			Vector3 pos = transform.position;
-//			pos.x += moveSpeed * Time.deltaTime;
-//			transform.position = pos;
-
 			//change direction if borders hit
 			if (character.position.x < leftBorder) {
 				moveCharacter (1.0f);
-				//Debug.Log ("HIT LEFT");
 			} else if (character.position.x > rightBorder) {
 				moveCharacter (-1.0f);
-				//Debug.Log ("HIT RIGHT");
 			}
 		}
 	}
