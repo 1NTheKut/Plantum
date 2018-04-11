@@ -10,6 +10,6 @@ public class StartGame : MonoBehaviour {
 
 	public void LoadLevel() {
 		//TO DO: Make an switch statement to load scene
-		SceneManager.LoadScene("Level1");
+		SceneManager.LoadScene("LaunchScene");
 	}
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -812,7 +812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a8d2862934cf4ee891b84e60a582ce2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeLeft: 20
+  timeLeft: 10
   timerText: {fileID: 0}
 --- !u!82 &411903502
 AudioSource:
