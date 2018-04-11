@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/LaunchScene.unity
     guid: e3574d76bff0b4d438f19d71a314abfb
   - enabled: 1
-    path: Assets/Scenes/phase1_2dDraft.unity
+    path: Assets/Scenes/Level1.unity
     guid: 60a5e478124104604ab47d4fa9749995
   - enabled: 1
     path: Assets/Scenes/WinScene.unity
@@ -20,3 +20,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LoseScene.unity
     guid: 2688c35957f9b4a28a694771d1a9a126
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
+    guid: 16c102b256d2a471fa381ce88feb471d
+  - enabled: 1
+    path: Assets/Scenes/Level3.unity
+    guid: a59125c2654aa4b1caa06e0309dc06ce
+  - enabled: 1
+    path: Assets/Scenes/LoadNextLevel.unity
+    guid: 9b60c45aa0834430bab70cc70bfb0307

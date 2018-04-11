@@ -17,37 +17,49 @@ public class Move2DPlayer : MonoBehaviour {
 	public Button left;
 	public Button right;
 
+	public float turnSpeed;
+	float someScale;
+
 	GameObject player;
 	public Rigidbody2D character;
+
+	private SpriteRenderer mySprite;
 
 	// Use this for initialization
 	void Start () {
 		//edits for making buttons to change direction
 		player = GameObject.Find("Player");
 		character = player.GetComponent<Rigidbody2D>();
+		mySprite = GetComponent<SpriteRenderer> ();
 
-		//end edits
 		dist = (transform.position - Camera.main.transform.position).z;
 		leftBorder = Camera.main.ViewportToWorldPoint(new Vector3(0, 0, dist)).x;
 		rightBorder = Camera.main.ViewportToWorldPoint(new Vector3(1, 0, dist)).x;
 
-//		Button btn = left.GetComponent<Button>();
-//		Button rightbtn = right.GetComponent<Button> ();
-//		btn.onClick.AddListener (MoveLeft);
-//		rightbtn.onClick.AddListener (MoveRight);
+		//someScale = character.position.x;
 
+	}
+
+	void turnCharacter(){
+		float targetAngle = -360.0f;
+		transform.rotation = 
+			Quaternion.Slerp( transform.rotation, 
+				Quaternion.Euler( 0, 0, targetAngle ), 
+				turnSpeed * Time.deltaTime );
 	}
 
 	void MoveLeft(){
 		player.GetComponent<Animator> ().SetBool ("isWalking", true);
 		player.GetComponent<Animator> ().SetBool ("isPlanting", false);
 		moveCharacter (-1.0f);
+		mySprite.flipX = true;
 	}
 
 	void MoveRight(){
 		player.GetComponent<Animator> ().SetBool ("isWalking", true);
 		player.GetComponent<Animator> ().SetBool ("isPlanting", false);
-		moveCharacter (1.0f);	
+		moveCharacter (1.0f);
+		mySprite.flipX = false;
 	}
 	
 	// Update is called once per frame
@@ -59,17 +71,11 @@ public class Move2DPlayer : MonoBehaviour {
 
 		timer += Time.deltaTime;
 		if (!isPlanting) {
-//			Vector3 pos = transform.position;
-//			pos.x += moveSpeed * Time.deltaTime;
-//			transform.position = pos;
-
 			//change direction if borders hit
 			if (character.position.x < leftBorder) {
 				moveCharacter (1.0f);
-				//Debug.Log ("HIT LEFT");
 			} else if (character.position.x > rightBorder) {
 				moveCharacter (-1.0f);
-				//Debug.Log ("HIT RIGHT");
 			}
 		}
 	}
@@ -77,6 +83,7 @@ public class Move2DPlayer : MonoBehaviour {
 	public void moveCharacter(float input){
 		//player.GetComponent<Animator> ().SetBool ("isWalking", true);
 		character.velocity = new Vector2 (input * 100.0f * Time.deltaTime, 0);
+		//character.position = new Vector2 (-1 * someScale, character.position.y);
 	}
 
 	public void ChangeDirection(float input) {
