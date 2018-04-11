@@ -11,6 +11,8 @@ public class TouchInput2D : MonoBehaviour {
 	bool canPlantSeed = false;
 	float timeSinceLastSeed;
 	float seedWaitTime = 3.0f;
+	public Sprite[] plantSprites;
+	int spriteRandomizer;
 
 	public bool isPlanting; //used to see if player can move or not: need to get this variable in MovePlayer and have it hold movement for 3 seconds
 
@@ -83,6 +85,9 @@ public class TouchInput2D : MonoBehaviour {
 	}
 
 	void PlantTree() {
+		player.GetComponent<Animator> ().SetBool ("isWalking", false);
+		player.GetComponent<Animator> ().SetBool ("isPlanting", true);
+
 		foreach(GameObject plantedTree in GameObject.FindGameObjectsWithTag("tree"))
 		{
 			if(Mathf.Round(player.transform.position.x) == Mathf.Round(plantedTree.transform.position.x))
@@ -93,8 +98,10 @@ public class TouchInput2D : MonoBehaviour {
 		if (isFreePos) {
 			StartCoroutine(moveCharacter.PlayerIsPlanting ());
 			Vector3 spawnPos = player.transform.position;
-			spawnPos.y -= .5f;
+			spawnPos.y -= 1.5f;
 			GameObject newPlant = Instantiate<GameObject> (treePreFab);
+			spriteRandomizer = Random.Range (0,plantSprites.Length);
+			newPlant.GetComponent<SpriteRenderer>().sprite = plantSprites[spriteRandomizer];
 			newPlant.transform.position = spawnPos;
 			PlanetHealthManager.treePreFab.Add (newPlant);
 		}
@@ -104,7 +111,7 @@ public class TouchInput2D : MonoBehaviour {
 		timeSinceLastSeed = 0;
 		seedReadyText.text = "Generating seed.";
 
-		Debug.Log ("Planted");
+		//Debug.Log ("Planted");
 	}
 }
 
