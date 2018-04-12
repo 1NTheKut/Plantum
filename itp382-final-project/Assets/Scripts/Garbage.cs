@@ -27,7 +27,7 @@ public class Garbage : MonoBehaviour {
 		if (collidedWith.tag == "ground") {
 			Destroy (this.gameObject);
 		} else if (collidedWith.tag == "Player") {
-			//Debug.Log("Hit player");
+			Debug.Log("Hit player");
 			Destroy (this.gameObject);
 			SceneManager.LoadScene ("LoseScene");
 			//comment this out if you don't want game to end when space junk hits player
