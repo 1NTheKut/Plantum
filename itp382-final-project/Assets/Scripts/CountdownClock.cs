@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class CountdownClock : MonoBehaviour
 {
-	public float timeLeft = 20f;
+	public float timeLeft = 30f;
 	public Text timerText;
 
 	// Use this for initialization

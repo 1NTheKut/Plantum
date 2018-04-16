@@ -7,10 +7,13 @@ using UnityEngine.SceneManagement;
 public class Garbage : MonoBehaviour {
 
 	public static float bottomY = -20f;
+	GameObject player;
+	PlayerHealth playerHealth_script;
 
 	// Use this for initialization
 	void Start () {
-
+		player = GameObject.Find("Player");
+		playerHealth_script = player.GetComponent<PlayerHealth> ();
 	}
 	
 	// Update is called once per frame
@@ -27,10 +30,8 @@ public class Garbage : MonoBehaviour {
 		if (collidedWith.tag == "ground") {
 			Destroy (this.gameObject);
 		} else if (collidedWith.tag == "Player") {
-			Debug.Log("Hit player");
-			Destroy (this.gameObject);
-			SceneManager.LoadScene ("LoseScene");
-			//comment this out if you don't want game to end when space junk hits player
+			//Debug.Log("Hit player");
+			playerHealth_script.removeHealth(this.gameObject);
 		} else if (collidedWith.tag == "tree") {
 			PlanetHealthManager.treePreFab.Remove (collidedWith);
 			Destroy (this.gameObject);

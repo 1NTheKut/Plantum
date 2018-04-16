@@ -105,7 +105,7 @@ public class Move2DPlayer : MonoBehaviour {
 	public void PlayerDonePlanting() {
 		isPlanting = false;
 		character.velocity = new Vector2 (0* Time.deltaTime, 0);
-//		player.GetComponent<Animator> ().SetBool ("isWalking", true);
+//		player.GetComponent<Animator> ().SetBool ("isWalking", false);
 //		player.GetComponent<Animator> ().SetBool ("isPlanting", false);
 	}
 		

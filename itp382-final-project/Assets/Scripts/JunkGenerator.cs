@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class JunkGenerator : MonoBehaviour {
 
-	public float secondsBetweenJunkDrop = 3f;
+	public float secondsBetweenJunkDrop = 4f;
 	Vector3 dropPos;
 	Vector3 scale = Vector3.one;
 	float timeLeft;
@@ -19,18 +19,18 @@ public class JunkGenerator : MonoBehaviour {
 
 	[SerializeField]
 	private float minJunkSize = 0.4f;
-	private float maxJunkSize = 0.9f;
+	private float maxJunkSize = 0.75f;
 
 	// Use this for initialization
 	void Start () {
 		//Wait 2 seconds before dropping first one
-		Invoke("createSpaceJunk", 2f);
+		Invoke("createSpaceJunk", 3f);
 	}
 
 	void Update(){
 		CountdownClock countdown = Camera.main.GetComponent<CountdownClock> ();
 		timeLeft = countdown.timeLeft;
-		secondsBetweenJunkDrop = timeLeft/60 + .5f;
+		secondsBetweenJunkDrop = timeLeft/120 + .8f;
 	}
 
 

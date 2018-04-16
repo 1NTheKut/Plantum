@@ -87,7 +87,6 @@ public class TouchInput2D : MonoBehaviour {
 	void PlantTree() {
 		player.GetComponent<Animator> ().SetBool ("isWalking", false);
 		player.GetComponent<Animator> ().SetBool ("isPlanting", true);
-
 		foreach(GameObject plantedTree in GameObject.FindGameObjectsWithTag("tree"))
 		{
 			if(Mathf.Round(player.transform.position.x) == Mathf.Round(plantedTree.transform.position.x))
@@ -96,6 +95,7 @@ public class TouchInput2D : MonoBehaviour {
 			}
 		}
 		if (isFreePos) {
+			
 			StartCoroutine(moveCharacter.PlayerIsPlanting ());
 			Vector3 spawnPos = player.transform.position;
 			spawnPos.y -= 1.5f;
@@ -107,6 +107,7 @@ public class TouchInput2D : MonoBehaviour {
 		}
 		//numSeeds--;
 		moveCharacter.PlayerDonePlanting ();
+
 		canPlantSeed = false;
 		timeSinceLastSeed = 0;
 		seedReadyText.text = "Generating seed.";
