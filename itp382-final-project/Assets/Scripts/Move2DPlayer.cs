@@ -91,13 +91,13 @@ public class Move2DPlayer : MonoBehaviour {
 		character.AddForce(new Vector2 (input * 100.0f * Time.deltaTime, 0));
 	}
 
-	public IEnumerator PlayerIsPlanting() {
+	public IEnumerator PlayerIsPlanting(float waitTime) {
 		isPlanting = true;
 
 		//Debug.Log ("isPlanting TRUE");
 		//moveSpeed = 0f;
 		character.AddForce(new Vector2 (0 * Time.deltaTime, 0));
-		yield return new WaitForSeconds (3.0f);
+		yield return new WaitForSeconds (waitTime);
 		//character.velocity = new Vector2 (1 * 100.0f * Time.deltaTime, 0);
 		//moveSpeed = 5f;
 	}

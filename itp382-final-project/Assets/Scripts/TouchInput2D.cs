@@ -5,14 +5,13 @@ using UnityEngine.UI;
 
 public class TouchInput2D : MonoBehaviour {
 
-	public GameObject treePreFab;
+
 	public GameObject player;
+	GameObject plantManager;
 	bool isFreePos;
 	bool canPlantSeed = false;
 	float timeSinceLastSeed;
 	float seedWaitTime = 3.0f;
-	public Sprite[] plantSprites;
-	int spriteRandomizer;
 
 	public bool isPlanting; //used to see if player can move or not: need to get this variable in MovePlayer and have it hold movement for 3 seconds
 
@@ -24,6 +23,7 @@ public class TouchInput2D : MonoBehaviour {
 	private Vector2 startPos;
 
 	Move2DPlayer moveCharacter;
+	PlantManager managePlant;
 
 	//private float ScreenWidth;
 
@@ -39,6 +39,7 @@ public class TouchInput2D : MonoBehaviour {
 		}
 		isFreePos = true;
 		player = GameObject.Find("Player");
+		plantManager = GameObject.Find ("PlantManager");
 
 
 		GameObject seedReadyGO = GameObject.Find ("SeedReady");
@@ -49,6 +50,7 @@ public class TouchInput2D : MonoBehaviour {
 		isPlanting = false;
 
 		moveCharacter = player.GetComponent<Move2DPlayer> ();
+		managePlant = plantManager.GetComponent<PlantManager> ();
 	}
 
 	// Update is called once per frame
@@ -71,8 +73,6 @@ public class TouchInput2D : MonoBehaviour {
 				//PlantTree ();
 			}
 
-//
-//		}
 		isFreePos = true;
 
 	}
@@ -95,15 +95,10 @@ public class TouchInput2D : MonoBehaviour {
 			}
 		}
 		if (isFreePos) {
-			
-			StartCoroutine(moveCharacter.PlayerIsPlanting ());
-			Vector3 spawnPos = player.transform.position;
-			spawnPos.y -= 1.5f;
-			GameObject newPlant = Instantiate<GameObject> (treePreFab);
-			spriteRandomizer = Random.Range (0,plantSprites.Length);
-			newPlant.GetComponent<SpriteRenderer>().sprite = plantSprites[spriteRandomizer];
-			newPlant.transform.position = spawnPos;
-			PlanetHealthManager.treePreFab.Add (newPlant);
+			//CALLING PLANT CLASS HERE
+			float plantTime = managePlant.newPlant(player.transform.position);
+			StartCoroutine(moveCharacter.PlayerIsPlanting (plantTime)); 
+
 		}
 		//numSeeds--;
 		moveCharacter.PlayerDonePlanting ();

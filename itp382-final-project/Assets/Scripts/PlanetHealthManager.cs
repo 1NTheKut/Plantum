@@ -36,7 +36,7 @@ public class PlanetHealthManager : MonoBehaviour {
 			planetGO.GetComponent<Animator> ().SetBool ("IsDying", true);
 			//anim.SetBool ("IsDying", true);
 			if (timeLeft <= 0) {
-				SceneManager.LoadScene ("LoseScene");
+				SceneManager.LoadScene ("LoseScene_planetDied");
 			}
 
 		}
