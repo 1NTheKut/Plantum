@@ -55,3 +55,6 @@ TagManager:
   - name: Garbage
     uniqueID: 3396581115
     locked: 0
+  - name: Canvas
+    uniqueID: 441265573
+    locked: 0
