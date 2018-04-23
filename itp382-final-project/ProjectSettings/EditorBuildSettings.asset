@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/WinScene.unity
     guid: 660041069b3ff4a8bae3fc0fee362d5e
   - enabled: 1
-    path: Assets/Scenes/LoseScene.unity
+    path: Assets/Scenes/LoseScene_playerDied.unity
     guid: 2688c35957f9b4a28a694771d1a9a126
   - enabled: 1
     path: Assets/Scenes/Level2.unity
@@ -29,9 +29,18 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Level.unity
+    guid: fef706b63979a4a6284a0057f6fe922e
+  - enabled: 1
+    path: Assets/Scenes/LoseScene_planetDied.unity
+    guid: 880c73b72bab74f078ab93466f343c66
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/LoadNextLevel.unity
     guid: 9b60c45aa0834430bab70cc70bfb0307
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 460c07187bf894597b71393a0e780297
