@@ -22,7 +22,6 @@ public class Garbage : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//delete apples if they fall off screen
 		if (transform.position.y < bottomY) {
 			Destroy (this.gameObject);
 		}
@@ -34,7 +33,6 @@ public class Garbage : MonoBehaviour {
 		if (collidedWith.tag == "ground") {
 			Destroy (this.gameObject);
 		} else if (collidedWith.tag == "Player") {
-			//Debug.Log("Hit player");
 			playerHealth_script.removeHealth(this.gameObject);
 		} else if (collidedWith.tag == "tree") {
 			plantHealth_script.removeHealth(collidedWith);

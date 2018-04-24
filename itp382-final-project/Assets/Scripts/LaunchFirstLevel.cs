@@ -20,7 +20,7 @@ public class LaunchFirstLevel : MonoBehaviour {
 	}
 
 	public void LoadLevel(){
-		SceneManager.LoadScene ("Level1");
+		SceneManager.LoadScene ("Level");
 	}
 
 	// Update is called once per frame

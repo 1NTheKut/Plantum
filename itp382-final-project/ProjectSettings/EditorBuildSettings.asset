@@ -6,7 +6,7 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: 
+    path:
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/LaunchScene.unity
@@ -30,11 +30,20 @@ EditorBuildSettings:
     path: Assets/Scenes/Level3.unity
     guid: 84efecd051d3c44faab401454653c668
   - enabled: 0
-    path: 
+    path:
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Level.unity
+    guid: fef706b63979a4a6284a0057f6fe922e
+  - enabled: 1
+    path: Assets/Scenes/LoseScene_planetDied.unity
+    guid: 880c73b72bab74f078ab93466f343c66
   - enabled: 0
-    path: 
+    path:
     guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/LoadNextLevel.unity
     guid: 9b60c45aa0834430bab70cc70bfb0307
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: 460c07187bf894597b71393a0e780297

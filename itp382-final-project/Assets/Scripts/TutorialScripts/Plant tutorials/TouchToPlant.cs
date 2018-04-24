@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TouchInput2D : MonoBehaviour {
+public class TouchToPlant : MonoBehaviour {
 
 
 	public GameObject player;
@@ -107,3 +107,5 @@ public class TouchInput2D : MonoBehaviour {
 
 	}
 }
+
+
