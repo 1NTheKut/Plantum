@@ -916,7 +916,7 @@ MonoBehaviour:
   - {fileID: 21300008, guid: beb2e6c82f78142f2a3792570e838dee, type: 3}
   - {fileID: 21300010, guid: beb2e6c82f78142f2a3792570e838dee, type: 3}
   timer: {fileID: 1116756875}
-  minJunkSize: 0.4
+  minJunkSize: 0.2
 --- !u!1 &328853135
 GameObject:
   m_ObjectHideFlags: 0
