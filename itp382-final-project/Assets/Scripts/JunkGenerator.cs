@@ -1,8 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JunkGenerator : MonoBehaviour {
+
 
 	public float secondsBetweenJunkDrop = 4f;
 	Vector3 dropPos;
@@ -13,13 +15,11 @@ public class JunkGenerator : MonoBehaviour {
 	private GameObject junkPreFab;
 	public Sprite[] garbageSprites;
 	int spriteRandomizer;
+	public Image timer;
 
 	[SerializeField]
-	private Camera cam;
-
-	[SerializeField]
-	private float minJunkSize = 0.4f;
-	private float maxJunkSize = 0.75f;
+	private float minJunkSize = 0.2f;
+	private float maxJunkSize = 0.8f;
 
 	// Use this for initialization
 	void Start () {
@@ -28,8 +28,8 @@ public class JunkGenerator : MonoBehaviour {
 	}
 
 	void Update(){
-		CountdownClock countdown = Camera.main.GetComponent<CountdownClock> ();
-		timeLeft = countdown.timeLeft;
+		TimerAnimation countdown = timer.GetComponent<TimerAnimation> ();
+		timeLeft = countdown.time;
 		secondsBetweenJunkDrop = timeLeft/120 + .8f;
 	}
 

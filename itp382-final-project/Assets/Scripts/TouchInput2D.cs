@@ -10,8 +10,7 @@ public class TouchInput2D : MonoBehaviour {
 	GameObject plantManager;
 	bool isFreePos;
 	bool canPlantSeed = false;
-	float timeSinceLastSeed;
-	float seedWaitTime = 3.0f;
+	float[] timesSinceLastSeed = { 0f, 0f, 0f };
 
 	public bool isPlanting; //used to see if player can move or not: need to get this variable in MovePlayer and have it hold movement for 3 seconds
 
@@ -28,6 +27,8 @@ public class TouchInput2D : MonoBehaviour {
 	//private float ScreenWidth;
 
 	public Button plantButton;
+	public Button[] plantButtons;
+
 
 	// Use this for initialization
 	void Start () {
@@ -40,13 +41,10 @@ public class TouchInput2D : MonoBehaviour {
 		isFreePos = true;
 		player = GameObject.Find("Player");
 		plantManager = GameObject.Find ("PlantManager");
+		for (int i = 0; i < 3; i++) {
+			plantButtons [i].interactable = false;
+		}
 
-
-		GameObject seedReadyGO = GameObject.Find ("SeedReady");
-		seedReadyText = seedReadyGO.GetComponent<Text> ();
-		seedReadyText.text = "Generating seed.";
-
-		timeSinceLastSeed = 0;
 		isPlanting = false;
 
 		moveCharacter = player.GetComponent<Move2DPlayer> ();
@@ -58,20 +56,19 @@ public class TouchInput2D : MonoBehaviour {
 		//seedText.text = "Seeds Left: " + numSeeds.ToString ();
 
 		//Timer:
-		timeSinceLastSeed += Time.deltaTime;
-		if (timeSinceLastSeed > seedWaitTime) {
-			//set plant seed to tru
-			canPlantSeed = true;
-			//change text
-			seedReadyText.text = "Seed Ready to Plant.";
+		for (int i = 0; i < 3; i++) {
+			timesSinceLastSeed[i] += Time.deltaTime;
+			if (timesSinceLastSeed [i] > managePlant.secondsToGenerate [i]) {
+				canPlantSeed = true;
+				plantButtons [i].interactable = true;
+			}
+		}
+		if (canPlantSeed) {
+			plantButtons [0].onClick.AddListener ( () => PlantTree( 0 ) );
+			plantButtons [1].onClick.AddListener ( () => PlantTree( 1 ) );
+			plantButtons [2].onClick.AddListener ( () => PlantTree( 2 ) );
 		}
 
-
-		Button plant = plantButton.GetComponent<Button> ();
-			if (canPlantSeed) { //numSeeds > 0 &&
-			 plant.onClick.AddListener (PlantTree);
-				//PlantTree ();
-			}
 
 		isFreePos = true;
 
@@ -84,7 +81,8 @@ public class TouchInput2D : MonoBehaviour {
 
 	}
 
-	void PlantTree() {
+	void PlantTree(int plantIndex) {
+		//Debug.Log ("In Plant Tree: " + plantIndex);
 		player.GetComponent<Animator> ().SetBool ("isWalking", false);
 		player.GetComponent<Animator> ().SetBool ("isPlanting", true);
 		foreach(GameObject plantedTree in GameObject.FindGameObjectsWithTag("tree"))
@@ -96,19 +94,16 @@ public class TouchInput2D : MonoBehaviour {
 		}
 		if (isFreePos) {
 			//CALLING PLANT CLASS HERE
-			float plantTime = managePlant.newPlant(player.transform.position);
-			StartCoroutine(moveCharacter.PlayerIsPlanting (plantTime)); 
+			float plantTime = managePlant.newPlant(player.transform.position, plantIndex);
+			StartCoroutine(moveCharacter.PlayerIsPlanting (plantTime));
 
 		}
 		//numSeeds--;
 		moveCharacter.PlayerDonePlanting ();
 
 		canPlantSeed = false;
-		timeSinceLastSeed = 0;
-		seedReadyText.text = "Generating seed.";
+		timesSinceLastSeed[plantIndex] = 0f;
+		plantButtons [plantIndex].interactable = false;
 
-		//Debug.Log ("Planted");
 	}
 }
-
-
