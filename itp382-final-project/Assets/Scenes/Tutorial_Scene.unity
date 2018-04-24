@@ -952,7 +952,7 @@ RectTransform:
   m_GameObject: {fileID: 403200413}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.0242635, y: 1.0242641, z: 1.0242641}
   m_Children:
   - {fileID: 540523315}
   - {fileID: 1382989959}
@@ -962,8 +962,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 22.5}
-  m_SizeDelta: {x: 406, y: 297.7}
+  m_AnchoredPosition: {x: 0.2, y: 180}
+  m_SizeDelta: {x: 406, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &403200415
 MonoBehaviour:
@@ -2403,7 +2403,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   order: 2
-  explanation: Space junk will fly at you. Use the buttons to dodge.
+  explanation: 'Space junk will fly at you. Use the buttons to dodge. If you get hit
+    three times you die! '
 --- !u!1 &1149536064
 GameObject:
   m_ObjectHideFlags: 0
@@ -3038,7 +3039,7 @@ RectTransform:
   m_GameObject: {fileID: 1382989958}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 0.9000001, z: 1}
   m_Children:
   - {fileID: 1854549733}
   m_Father: {fileID: 403200414}
@@ -3046,7 +3047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000012398, y: -64}
+  m_AnchoredPosition: {x: -0.000012398, y: -47.4}
   m_SizeDelta: {x: 203, y: 64.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1382989960
@@ -3363,6 +3364,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1588920153}
   - component: {fileID: 1588920154}
+  - component: {fileID: 1588920155}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -3389,9 +3391,30 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1588920152}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a1ced3892e1ab4b5188762f033a57b71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 208939744}
+  isPlanting: 0
+  seedReadyText: {fileID: 0}
+  sensitivity: 0.5
+  swipeThreshold: 0
+  plantButton: {fileID: 0}
+  plantButtons:
+  - {fileID: 753065593}
+  - {fileID: 1383829427}
+  - {fileID: 1586961032}
+--- !u!114 &1588920155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1588920152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2f024fb046b747b5b955f54bcc55453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 208939744}
