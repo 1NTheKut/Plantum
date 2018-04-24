@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4465785, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -851,7 +851,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 325307816}
-  - component: {fileID: 325307815}
   - component: {fileID: 325307817}
   m_Layer: 0
   m_Name: JunkGenerator
@@ -860,28 +859,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &325307815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 325307814}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 33146380113c749d3baa507821641ae7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  secondsBetweenJunkDrop: 4
-  junkPreFab: {fileID: 1424616995982154, guid: 53f5552214e0a4d75ac2f8db37096c77, type: 2}
-  garbageSprites:
-  - {fileID: 21300000, guid: beb2e6c82f78142f2a3792570e838dee, type: 3}
-  - {fileID: 21300002, guid: beb2e6c82f78142f2a3792570e838dee, type: 3}
-  - {fileID: 21300004, guid: beb2e6c82f78142f2a3792570e838dee, type: 3}
-  - {fileID: 21300006, guid: beb2e6c82f78142f2a3792570e838dee, type: 3}
-  - {fileID: 21300008, guid: beb2e6c82f78142f2a3792570e838dee, type: 3}
-  - {fileID: 21300010, guid: beb2e6c82f78142f2a3792570e838dee, type: 3}
-  timer: {fileID: 1116756875}
-  minJunkSize: 0.2
 --- !u!4 &325307816
 Transform:
   m_ObjectHideFlags: 0
@@ -906,7 +883,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a30752a27d4d4cd7bd73dd0669ca243, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  secondsBetweenJunkDrop: 4
+  secondsBetweenJunkDrop: 0.5
   junkPreFab: {fileID: 1424616995982154, guid: 53f5552214e0a4d75ac2f8db37096c77, type: 2}
   garbageSprites:
   - {fileID: 21300000, guid: beb2e6c82f78142f2a3792570e838dee, type: 3}

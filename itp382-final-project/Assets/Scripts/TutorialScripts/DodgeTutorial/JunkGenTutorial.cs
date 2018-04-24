@@ -6,10 +6,11 @@ using UnityEngine.UI;
 public class JunkGenTutorial : MonoBehaviour {
 
 
-	public float secondsBetweenJunkDrop;
+	public float secondsBetweenJunkDrop = .5f;
 	Vector3 dropPos;
 	Vector3 scale = Vector3.one;
 	float timeLeft;
+	bool firstCall = false;
 
 	[SerializeField]
 	private GameObject junkPreFab;
@@ -22,18 +23,18 @@ public class JunkGenTutorial : MonoBehaviour {
 	private float maxJunkSize = 0.8f;
 
 	// Use this for initialization
-	void Start () {}
+	void Start () {
+	}
 
 	void Update(){
-		if (DodgeJunkTutorial.beginToDropJunk == true) {
-			Invoke("createSpaceJunk", 3f);
+		if (!firstCall && DodgeJunkTutorial.beginToDropJunk == true) {
+			Invoke("createSpaceJunk",.5f);
+			firstCall = true;
 		}
 
 		TimerAnimation countdown = timer.GetComponent<TimerAnimation> ();
 		timeLeft = countdown.time;
-		secondsBetweenJunkDrop = timeLeft/120 + .8f;
-
-
+		secondsBetweenJunkDrop = 1f;
 	}
 
 
@@ -57,4 +58,3 @@ public class JunkGenTutorial : MonoBehaviour {
 
 	}
 }
-	
