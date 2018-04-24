@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class JunkGenTutorial : MonoBehaviour {
 
 
-	public float secondsBetweenJunkDrop = 4f;
+	public float secondsBetweenJunkDrop;
 	Vector3 dropPos;
 	Vector3 scale = Vector3.one;
 	float timeLeft;
@@ -22,7 +22,7 @@ public class JunkGenTutorial : MonoBehaviour {
 	private float maxJunkSize = 0.8f;
 
 	// Use this for initialization
-	void Start () {	}
+	void Start () {}
 
 	void Update(){
 		if (DodgeJunkTutorial.beginToDropJunk == true) {
@@ -32,6 +32,8 @@ public class JunkGenTutorial : MonoBehaviour {
 		TimerAnimation countdown = timer.GetComponent<TimerAnimation> ();
 		timeLeft = countdown.time;
 		secondsBetweenJunkDrop = timeLeft/120 + .8f;
+
+
 	}
 
 
@@ -50,9 +52,9 @@ public class JunkGenTutorial : MonoBehaviour {
 		newJunk.transform.localScale = scale;
 		newJunk.transform.position = dropPos;
 
-		if (DodgeJunkTutorial.beginToDropJunk == true) {
-			Invoke ("createSpaceJunk", secondsBetweenJunkDrop);
-		}
+
+		Invoke ("createSpaceJunk", secondsBetweenJunkDrop);
+
 	}
 }
 	
