@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class JunkGenTutorial : MonoBehaviour {
 
@@ -21,6 +22,8 @@ public class JunkGenTutorial : MonoBehaviour {
 	private float minJunkSize = 0.4f;
 	private float maxJunkSize = 0.75f;
 
+	public Image timer;
+
 	// Use this for initialization
 	void Start () {
 		//Wait 2 seconds before dropping first one
@@ -34,8 +37,8 @@ public class JunkGenTutorial : MonoBehaviour {
 			Invoke ("createSpaceJunk", 3.0f);
 		}
 
-		CountdownClock countdown = Camera.main.GetComponent<CountdownClock> ();
-		timeLeft = countdown.timeLeft;
+		TimerAnimation countdown = timer.GetComponent<TimerAnimation> ();
+		timeLeft = countdown.time;
 		secondsBetweenJunkDrop = timeLeft/120 + .8f;
 	}
 
