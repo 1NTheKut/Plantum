@@ -26,8 +26,8 @@ public class TouchInput2D : MonoBehaviour {
 
 	//private float ScreenWidth;
 
-	public Button plantButton;
 	public Button[] plantButtons;
+	bool[] activeButtons = { true, false, false };
 
 
 	// Use this for initialization
@@ -42,9 +42,12 @@ public class TouchInput2D : MonoBehaviour {
 		player = GameObject.Find("Player");
 		plantManager = GameObject.Find ("PlantManager");
 		for (int i = 0; i < 3; i++) {
-			plantButtons [i].interactable = false;
+			if (activeButtons [i] == true) {
+				plantButtons [i].interactable = false;
+			}
 		}
-
+		plantButtons[1].gameObject.SetActive(false);
+		plantButtons[2].gameObject.SetActive(false);
 		isPlanting = false;
 
 		moveCharacter = player.GetComponent<Move2DPlayer> ();
@@ -56,9 +59,17 @@ public class TouchInput2D : MonoBehaviour {
 		//seedText.text = "Seeds Left: " + numSeeds.ToString ();
 
 		//Timer:
+		if (ScoreManager.timer > 20f) { //after 30 seconds, show 2nd button
+			plantButtons[1].gameObject.SetActive(true);
+			activeButtons [1] = true;
+		}
+		if (ScoreManager.timer > 40f) { //after 60 seconds, show 3rd button
+			plantButtons[2].gameObject.SetActive(true);
+			activeButtons [2] = true;
+		}
 		for (int i = 0; i < 3; i++) {
 			timesSinceLastSeed[i] += Time.deltaTime;
-			if (timesSinceLastSeed [i] > managePlant.secondsToGenerate [i]) {
+			if (timesSinceLastSeed [i] > managePlant.secondsToGenerate [i] && activeButtons[i] == true) {
 				canPlantSeed = true;
 				plantButtons [i].interactable = true;
 			}
@@ -97,13 +108,14 @@ public class TouchInput2D : MonoBehaviour {
 			float plantTime = managePlant.newPlant(player.transform.position, plantIndex);
 			StartCoroutine(moveCharacter.PlayerIsPlanting (plantTime));
 
+			canPlantSeed = false;
+			timesSinceLastSeed[plantIndex] = 0f;
+			plantButtons [plantIndex].interactable = false;
+
 		}
 		//numSeeds--;
 		moveCharacter.PlayerDonePlanting ();
 
-		canPlantSeed = false;
-		timesSinceLastSeed[plantIndex] = 0f;
-		plantButtons [plantIndex].interactable = false;
 
 	}
 }

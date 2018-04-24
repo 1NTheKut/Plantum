@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class pauseScript : MonoBehaviour {
+public class PauseScript : MonoBehaviour {
 
 	public bool paused;
 	public GameObject panel;

@@ -7,8 +7,9 @@ using UnityEngine.SceneManagement;
 public class TimerAnimation : MonoBehaviour {
 
 	Image fillImg;
-	public float timeAmount = 30f;
-	public float time;
+	public static float timeAmount = 65f;
+	public static float time;
+	public static float timeTotal;
 	public Text timeText;
 
 
@@ -16,10 +17,12 @@ public class TimerAnimation : MonoBehaviour {
 	void Start () {
 		fillImg = this.GetComponent<Image>();
 		time = timeAmount;
+		timeTotal = 0f;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
+		timeTotal += Time.deltaTime;
 		if (time > 0) {
 			time -= Time.deltaTime;
 			fillImg.fillAmount = time / timeAmount;
