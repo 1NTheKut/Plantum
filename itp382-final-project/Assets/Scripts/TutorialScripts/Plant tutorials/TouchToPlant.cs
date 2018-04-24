@@ -41,9 +41,6 @@ public class TouchToPlant : MonoBehaviour {
 		isFreePos = true;
 		player = GameObject.Find("Player");
 		plantManager = GameObject.Find ("PlantManager");
-		for (int i = 0; i < 3; i++) {
-			plantButtons [i].interactable = false;
-		}
 
 		isPlanting = false;
 

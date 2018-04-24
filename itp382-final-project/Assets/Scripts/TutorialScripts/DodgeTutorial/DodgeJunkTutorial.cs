@@ -14,6 +14,7 @@ public class DodgeJunkTutorial : Tutorial {
 	
 	public override void CheckIfHappening(){
 		isCurrentTutorial = true;
+		pauseTutorial.activateMenu = true;
 	}
 
 	void Update(){
