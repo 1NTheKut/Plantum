@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class TogglePanelButton : MonoBehaviour {
 
-	pauseScript pauseScript;
+	PauseScript pauseScript;
 
 	void Start () {
-		pauseScript = this.GetComponent<pauseScript> ();
+		pauseScript = this.GetComponent<PauseScript> ();
 	}
 
 	public void TogglePanel(GameObject panel) {

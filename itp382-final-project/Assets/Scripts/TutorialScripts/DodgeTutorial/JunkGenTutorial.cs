@@ -32,8 +32,8 @@ public class JunkGenTutorial : MonoBehaviour {
 			firstCall = true;
 		}
 
-		TimerAnimation countdown = timer.GetComponent<TimerAnimation> ();
-		timeLeft = countdown.time;
+		//TimerAnimation countdown = timer.GetComponent<TimerAnimation> ();
+		timeLeft = TimerAnimation.time;
 		secondsBetweenJunkDrop = 1f;
 	}
 

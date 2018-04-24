@@ -10,10 +10,11 @@ public class PlantManager : MonoBehaviour {
 	public float[] secondsToPlant = {1.0f,2.0f,3.0f};
 	public float[] secondsToGenerate = { 3.0f, 6.0f, 9.0f }; //this should change based on the level
 	public float[] increaseY = { .9f, 1.4f, 2.4f };
+	ScoreManager score_script;
 
 	// Use this for initialization
 	void Start () {
-		
+		score_script =  GameObject.Find("Main Camera").GetComponent<ScoreManager>();
 	}
 	
 	// Update is called once per frame
@@ -42,6 +43,7 @@ public class PlantManager : MonoBehaviour {
 		}
 		newPlant.transform.position = spawnPos;
 		PlanetHealthManager.treePreFab.Add (newPlant);
+		score_script.AddPlantScore (plantIndex);
 
 		return secondsToPlant [plantIndex];
 	}

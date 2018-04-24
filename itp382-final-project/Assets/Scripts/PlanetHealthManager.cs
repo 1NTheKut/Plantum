@@ -9,11 +9,11 @@ public class PlanetHealthManager : MonoBehaviour {
 	public static List<GameObject> treePreFab = new List<GameObject>();
 
 	GameObject planetGO;
-	float timeLeft = 5f;
+	float timeLeft = 10f;
 
 	// Use this for initialization
 	void Start () {
-
+		timeLeft = 10f;
 		planetGO = GameObject.Find("planet_ground");
 	}
 	
@@ -22,7 +22,15 @@ public class PlanetHealthManager : MonoBehaviour {
 		//checkPlanetHealth ();
 		if (treePreFab.Count > 0) {
 			//treesExist = true;
-			timeLeft = 5f;
+			if (ScoreManager.timer > 40f) {
+				timeLeft = 5f;
+			}
+			else if (ScoreManager.timer > 20f) {
+				timeLeft = 7f;
+			}
+			else {
+				timeLeft = 10f;
+			}
 			planetGO.GetComponent<Animator> ().SetBool ("IsDying", false);
 			//anim.SetBool("IsDying", false);
 		} else {

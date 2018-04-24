@@ -6,20 +6,19 @@ using UnityEngine.UI;
 public class JunkGenerator : MonoBehaviour {
 
 
-	public float secondsBetweenJunkDrop = 4f;
+	float secondsBetweenJunkDrop = 4f;
 	Vector3 dropPos;
 	Vector3 scale = Vector3.one;
-	float timeLeft;
 
 	[SerializeField]
 	private GameObject junkPreFab;
 	public Sprite[] garbageSprites;
 	int spriteRandomizer;
-	public Image timer;
 
 	[SerializeField]
 	private float minJunkSize = 0.2f;
 	private float maxJunkSize = 0.8f;
+	float addGravity = .1f;
 
 	// Use this for initialization
 	void Start () {
@@ -28,9 +27,7 @@ public class JunkGenerator : MonoBehaviour {
 	}
 
 	void Update(){
-		TimerAnimation countdown = timer.GetComponent<TimerAnimation> ();
-		timeLeft = countdown.time;
-		secondsBetweenJunkDrop = timeLeft/120 + .8f;
+		secondsBetweenJunkDrop = 1 / ScoreManager.timer * 15f + .3f;
 	}
 
 
@@ -42,13 +39,20 @@ public class JunkGenerator : MonoBehaviour {
 		if (spriteRandomizer < garbageSprites.Length && spriteRandomizer >= 0) {
 			newJunk.GetComponent<SpriteRenderer>().sprite = garbageSprites[spriteRandomizer];
 		}
+		if (ScoreManager.timer > 10f) {
+			newJunk.GetComponent<Rigidbody2D> ().AddForce (Vector3.down * addGravity);
+		}
 
 		float randSize = Random.Range (minJunkSize, maxJunkSize);
 		scale = new Vector3(randSize, randSize, 0);
-
 		newJunk.transform.localScale = scale;
 		newJunk.transform.position = dropPos;
 
 		Invoke ("createSpaceJunk", secondsBetweenJunkDrop);
+		Invoke ("increaseGravity", 10f);
+	}
+
+	void increaseGravity() {
+		addGravity += .1f;
 	}
 }
