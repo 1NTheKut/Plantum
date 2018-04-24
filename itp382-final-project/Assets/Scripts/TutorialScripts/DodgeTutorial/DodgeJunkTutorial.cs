@@ -10,12 +10,20 @@ public class DodgeJunkTutorial : Tutorial {
 	public static bool beginCountdownTimer;
 
 	void Awake () {
-		//beginCountdownTimer = false;
 	}
 	
 	public override void CheckIfHappening(){
+		isCurrentTutorial = true;
+	}
+
+	void Update(){
+		if (!isCurrentTutorial) {
+			return;
+		}
+
 		beginToDropJunk = true;
 		beginCountdownTimer = true;
+		isCurrentTutorial = false;
 	}
 }
 

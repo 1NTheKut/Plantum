@@ -6,23 +6,29 @@ using UnityEngine.SceneManagement;
 
 public class TutorialCountdownTimer : MonoBehaviour
 {
-	public float timeLeft = 30f;
-	public Text timerText;
+	
+	Image fillImg;
+	public float timeAmount = 10f;
+	public float time;
+	public Text timeText;
 
 	// Use this for initialization
 	void Start ()
 	{
-		GameObject timerGO = GameObject.Find ("Countdown");
-		timerText = timerGO.GetComponent<Text> ();
+		fillImg = this.GetComponent<Image>();
+		time = timeAmount;
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
 		if (DodgeJunkTutorial.beginCountdownTimer == true) {
-			timeLeft -= Time.deltaTime;
-			timerText.text = "Time Left: " + timeLeft.ToString ("f2");
-			if (timeLeft <= 0) {
+			if (time > 0) {
+				time -= Time.deltaTime;
+				fillImg.fillAmount = time / timeAmount;
+				timeText.text = time.ToString ("F");
+			}
+			else if (time <= 0) {
 				TutorialManager.Instance.CompletedAllTutorials();
 			}
 		}

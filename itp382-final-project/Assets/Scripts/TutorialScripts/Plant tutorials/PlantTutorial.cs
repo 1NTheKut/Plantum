@@ -9,16 +9,7 @@ public class PlantTutorial : Tutorial {
 
 	public override void CheckIfHappening(){
 		isCurrentTutorial = true;
-		for (int i = 0; i < plantButtons.Count; i++) {
-			if (Input.GetMouseButtonDown(i)) {
-				plantButtons.RemoveAt(i);
-				break;
-			}
-		}
 
-		if (plantButtons.Count == 0) {
-			TutorialManager.Instance.CompletedCurrentTutorial ();		
-		}
 	}
 	// Use this for initialization
 	void Start () {
@@ -27,6 +18,20 @@ public class PlantTutorial : Tutorial {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (!isCurrentTutorial) {
+			return;
+		}
+
+		for (int i = 0; i < plantButtons.Count; i++) {
+			if (Input.GetMouseButtonDown(i)) {
+				plantButtons.RemoveAt(i);
+				break;
+			}
+		}
+
+		if (plantButtons.Count == 0) {
+			TutorialManager.Instance.CompletedCurrentTutorial ();
+			isCurrentTutorial = false;
+		}
 	}
 }

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class JunkGenTutorial : MonoBehaviour {
 
+
 	public float secondsBetweenJunkDrop = 4f;
 	Vector3 dropPos;
 	Vector3 scale = Vector3.one;
@@ -14,27 +15,18 @@ public class JunkGenTutorial : MonoBehaviour {
 	private GameObject junkPreFab;
 	public Sprite[] garbageSprites;
 	int spriteRandomizer;
-
-	[SerializeField]
-	private Camera cam;
-
-	[SerializeField]
-	private float minJunkSize = 0.4f;
-	private float maxJunkSize = 0.75f;
-
 	public Image timer;
 
+	[SerializeField]
+	private float minJunkSize = 0.2f;
+	private float maxJunkSize = 0.8f;
+
 	// Use this for initialization
-	void Start () {
-		//Wait 2 seconds before dropping first one
-//		if (DodgeJunkTutorial.beginToDropJunk == true) {
-//			Invoke ("createSpaceJunk", 0.0f);
-//		}
-	}
+	void Start () {	}
 
 	void Update(){
 		if (DodgeJunkTutorial.beginToDropJunk == true) {
-			Invoke ("createSpaceJunk", 3.0f);
+			Invoke("createSpaceJunk", 3f);
 		}
 
 		TimerAnimation countdown = timer.GetComponent<TimerAnimation> ();
@@ -58,7 +50,9 @@ public class JunkGenTutorial : MonoBehaviour {
 		newJunk.transform.localScale = scale;
 		newJunk.transform.position = dropPos;
 
-		Invoke ("createSpaceJunk", secondsBetweenJunkDrop);
-
+		if (DodgeJunkTutorial.beginToDropJunk == true) {
+			Invoke ("createSpaceJunk", secondsBetweenJunkDrop);
+		}
 	}
 }
+	

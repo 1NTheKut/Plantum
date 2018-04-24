@@ -1131,7 +1131,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e301fc6fcd5774330a2e52a5f9d5a360, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 463968199}
 --- !u!1 &601501489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1974,13 +1973,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Levels:
-  - {fileID: 1080128437564058, guid: cd1ab23df9d89424d9386838eb2d6bf2, type: 2}
-  - {fileID: 1020401967570668, guid: 30a2a52857d1a4f72ad7fd7a48862f1e, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   Prefabs:
-  - {fileID: 1028247825802988, guid: cd1ab23df9d89424d9386838eb2d6bf2, type: 2}
-  - {fileID: 1828971218037706, guid: cd1ab23df9d89424d9386838eb2d6bf2, type: 2}
-  - {fileID: 1772850015007998, guid: cd1ab23df9d89424d9386838eb2d6bf2, type: 2}
-  - {fileID: 1327276193506142, guid: cd1ab23df9d89424d9386838eb2d6bf2, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   level: {fileID: 0}
 --- !u!4 &1924020059
 Transform:
