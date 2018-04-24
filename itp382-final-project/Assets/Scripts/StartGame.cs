@@ -12,4 +12,8 @@ public class StartGame : MonoBehaviour {
 		//TO DO: Make an switch statement to load scene
 		SceneManager.LoadScene("Level1");
 	}
+
+	public void GoTutorial() {
+		SceneManager.LoadScene ("Tutorial_Scene");
+	}
 }
