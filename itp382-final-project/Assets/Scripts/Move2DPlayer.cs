@@ -74,8 +74,10 @@ public class Move2DPlayer : MonoBehaviour {
 			//change direction if borders hit
 			if (character.position.x < leftBorder) {
 				moveCharacter (1.0f);
+				mySprite.flipX = false;
 			} else if (character.position.x > rightBorder) {
 				moveCharacter (-1.0f);
+				mySprite.flipX = true;
 			}
 		}
 	}
