@@ -23,7 +23,7 @@ public class JunkGenTutorial : MonoBehaviour {
 	private float maxJunkSize = 0.8f;
 
 	// Use this for initialization
-	void Start () {	
+	void Start () {
 	}
 
 	void Update(){
@@ -53,9 +53,8 @@ public class JunkGenTutorial : MonoBehaviour {
 		newJunk.transform.localScale = scale;
 		newJunk.transform.position = dropPos;
 
-		if (DodgeJunkTutorial.beginToDropJunk == true) {
-			Invoke ("createSpaceJunk", secondsBetweenJunkDrop);
-		}
+
+		Invoke ("createSpaceJunk", secondsBetweenJunkDrop);
+
 	}
 }
-	

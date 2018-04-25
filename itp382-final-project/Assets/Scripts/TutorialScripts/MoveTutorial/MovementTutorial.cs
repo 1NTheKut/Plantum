@@ -7,23 +7,23 @@ public class MovementTutorial : Tutorial {
 
 	public List<Button> Buttons = new List<Button>();
 
-	public Button goOn;
-
 	void Start(){
-		goOn.interactable = false;
 	}
 
 	public override void CheckIfHappening(){
-		for (int i = 0; i < Buttons.Count; i++) {
+		pauseTutorial.activateMenu = true;
+		for (int i = 0; i <= Buttons.Count; i++) {
 			if (Input.GetMouseButtonDown(i)) {
 				Buttons.RemoveAt(i);
 				break;
 			}
 		}
 
-		if (Buttons.Count == 0) {
+		if (Buttons.Count == 1) {
+			pauseTutorial.activateMenu = false;
+		} else if (Buttons.Count == 0) {
 			TutorialManager.Instance.CompletedCurrentTutorial ();
-			goOn.interactable = true;
 		}
+
 	}
 }

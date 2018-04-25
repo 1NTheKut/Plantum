@@ -44,7 +44,7 @@ public class TutorialManager : MonoBehaviour {
 	public void SetNextTutorial(int currentOrder){
 		currentTutorial = GetTutorialByOrder (currentOrder);
 		if (!currentTutorial) {
-			CompletedAllTutorials ();
+			//CompletedAllTutorials ();
 			return;
 		}
 
