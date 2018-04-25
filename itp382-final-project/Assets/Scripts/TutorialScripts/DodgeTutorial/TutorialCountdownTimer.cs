@@ -29,6 +29,8 @@ public class TutorialCountdownTimer : MonoBehaviour
 				timeText.text = time.ToString ("F");
 			}
 			else if (time <= 0) {
+				time = 0;
+				timeText.text = "0";
 				TutorialManager.Instance.CompletedAllTutorials();
 			}
 		}
