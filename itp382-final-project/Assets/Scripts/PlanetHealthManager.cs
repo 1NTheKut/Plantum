@@ -13,8 +13,9 @@ public class PlanetHealthManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		timeLeft = 10f;
+		timeLeft = 8f;
 		planetGO = GameObject.Find("planet_ground");
+		planetGO.GetComponent<Animator> ().SetBool ("IsDying", true);
 	}
 	
 	// Update is called once per frame

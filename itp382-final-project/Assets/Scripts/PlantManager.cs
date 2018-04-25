@@ -43,6 +43,7 @@ public class PlantManager : MonoBehaviour {
 		}
 		newPlant.transform.position = spawnPos;
 		PlanetHealthManager.treePreFab.Add (newPlant);
+		//error here bc of tutorial!
 		score_script.AddPlantScore (plantIndex);
 
 		return secondsToPlant [plantIndex];
