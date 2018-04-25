@@ -16,4 +16,8 @@ public class StartGame : MonoBehaviour {
 	public void GoTutorial() {
 		SceneManager.LoadScene ("Tutorial_Scene");
 	}
+
+	public void GoHome() {
+		SceneManager.LoadScene ("LaunchScene");
+	}
 }

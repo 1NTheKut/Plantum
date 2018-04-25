@@ -616,8 +616,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   order: 1
-  explanation: Press the 3 buttons below to plant different plants throughout the
-    game. Note in the actual game, button activation will be random.
+  explanation: Press the 3 buttons below to plant different plants. If there are no
+    plants planted, your planet will die!
   plantButtons:
   - {fileID: 753065593}
 --- !u!1 &268479423
@@ -2525,7 +2525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   order: 0
-  explanation: Move by pressing the L and R buttons. Please move around
+  explanation: Move by pressing the L and R buttons. Please move around.
   Buttons:
   - {fileID: 682084322}
   - {fileID: 328853137}
@@ -2743,7 +2743,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1383829426
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2759,8 +2759,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -325.0373, y: 48}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: -325.0373, y: 67.36}
+  m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1383829427
 MonoBehaviour:
@@ -2853,7 +2853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1586961031
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2869,8 +2869,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 306, y: 51.471313}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchoredPosition: {x: 306, y: 71.8}
+  m_SizeDelta: {x: 65, y: 65}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1586961032
 MonoBehaviour:
