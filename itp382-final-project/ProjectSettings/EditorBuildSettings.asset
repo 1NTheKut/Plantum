@@ -13,40 +13,43 @@ EditorBuildSettings:
     guid: e3574d76bff0b4d438f19d71a314abfb
   - enabled: 1
     path: Assets/Scenes/Level1.unity
-    guid: 60a5e478124104604ab47d4fa9749995
-  - enabled: 1
-    path: Assets/Scenes/Win-Lose-LaunchScenes/WinScene.unity
-    guid: 660041069b3ff4a8bae3fc0fee362d5e
-  - enabled: 1
-    path: Assets/Scenes/Win-Lose-LaunchScenes/LoseScene_planetDied.unity
-    guid: 880c73b72bab74f078ab93466f343c66
-  - enabled: 1
-    path: Assets/Scenes/Win-Lose-LaunchScenes/LoseScene_playerDied.unity
-    guid: 2688c35957f9b4a28a694771d1a9a126
-  - enabled: 1
-    path: Assets/Scenes/Level2.unity
-    guid: f479fc05bee6e4beebde23108ef381c4
-  - enabled: 1
-    path: Assets/Scenes/Level3.unity
-    guid: 84efecd051d3c44faab401454653c668
+    guid: 5392d05e2d26f4a38aa3d365943a9bef
   - enabled: 1
     path: Assets/Scenes/Tutorial_Scene.unity
     guid: df4ef63b472fc48339947f9276b0d2f9
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Scenes/Win-Lose-LaunchScenes/LoseScene_playerDied.unity
+    guid: 2688c35957f9b4a28a694771d1a9a126
+  - enabled: 1
+    path: Assets/Scenes/Win-Lose-LaunchScenes/WinScene.unity
+    guid: 660041069b3ff4a8bae3fc0fee362d5e
   - enabled: 0
     path: 
-    guid: fef706b63979a4a6284a0057f6fe922e
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Win-Lose-LaunchScenes/LoseScene_planetDied.unity
     guid: 880c73b72bab74f078ab93466f343c66
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Scenes/LoadNextLevel.unity
-    guid: 9b60c45aa0834430bab70cc70bfb0307
-  - enabled: 1
-    path: Assets/Scenes/Tutorial.unity
-    guid: 460c07187bf894597b71393a0e780297
+    path: Assets/Scenes/Win-Lose-LaunchScenes/LoseScene_planetDied.unity
+    guid: 880c73b72bab74f078ab93466f343c66
