@@ -15,15 +15,17 @@ public class DodgeJunkTutorial : Tutorial {
 	public override void CheckIfHappening(){
 		isCurrentTutorial = true;
 		pauseTutorial.activateMenu = true;
+		beginToDropJunk = true;
+		beginCountdownTimer = true;
 	}
 
 	void Update(){
 		if (!isCurrentTutorial) {
+			beginToDropJunk = false;
+			beginCountdownTimer = false;
 			return;
 		}
 
-		beginToDropJunk = true;
-		beginCountdownTimer = true;
 		isCurrentTutorial = false;
 	}
 }
