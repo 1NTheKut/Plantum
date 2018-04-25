@@ -620,6 +620,8 @@ MonoBehaviour:
     plants planted, your planet will die!
   plantButtons:
   - {fileID: 753065593}
+  - {fileID: 753065593}
+  - {fileID: 753065593}
 --- !u!1 &268479423
 GameObject:
   m_ObjectHideFlags: 0
