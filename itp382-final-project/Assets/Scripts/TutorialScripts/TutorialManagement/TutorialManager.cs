@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class TutorialManager : MonoBehaviour {
 
 	public List<Tutorial> tutorials = new List<Tutorial>();
+	public Button exitButton;
 	 
 	public Text tutorialText;
 
@@ -28,6 +29,7 @@ public class TutorialManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		SetNextTutorial (0);
+		exitButton.interactable = false;
 	}
 	
 	// Update is called once per frame
@@ -52,7 +54,9 @@ public class TutorialManager : MonoBehaviour {
 	}
 
 	public void CompletedAllTutorials(){
+		exitButton.interactable = true;
 		tutorialText.text = "All tutorials completed!";
+
 	}
 
 	public Tutorial GetTutorialByOrder(int order){

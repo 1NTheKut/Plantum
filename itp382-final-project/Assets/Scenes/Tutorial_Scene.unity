@@ -1242,7 +1242,6 @@ GameObject:
   - component: {fileID: 533614456}
   - component: {fileID: 533614457}
   - component: {fileID: 533614458}
-  - component: {fileID: 533614459}
   m_Layer: 0
   m_Name: planet_ground
   m_TagString: ground
@@ -1369,17 +1368,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &533614459
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 533614453}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e301fc6fcd5774330a2e52a5f9d5a360, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &601501489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1855,6 +1843,7 @@ MonoBehaviour:
   - {fileID: 1261029210}
   - {fileID: 265808307}
   - {fileID: 1129162298}
+  exitButton: {fileID: 1382989960}
   tutorialText: {fileID: 1176174114}
 --- !u!114 &979958583
 MonoBehaviour:
@@ -3195,7 +3184,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Exit To Main Menu
+  m_Text: Finish Tutorial
 --- !u!222 &1854549735
 CanvasRenderer:
   m_ObjectHideFlags: 0
