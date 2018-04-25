@@ -1250,7 +1250,7 @@ AudioSource:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 411903496}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 8e888affaa3ed4abea756f31b0517472, type: 3}
@@ -1996,8 +1996,8 @@ MonoBehaviour:
   m_Colors:
     m_NormalColor: {r: 0.21176472, g: 0.2627451, b: 0.67058825, a: 0}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0}
-    m_PressedColor: {r: 0.16911763, g: 0.14637423, b: 0.16142501, a: 0.078}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_PressedColor: {r: 0.16862746, g: 0.14509805, b: 0.16078432, a: 0.69803923}
+    m_DisabledColor: {r: 0.16862746, g: 0.14509805, b: 0.16078432, a: 0.69803923}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
