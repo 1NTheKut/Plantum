@@ -22,7 +22,7 @@ public class TouchToPlant : MonoBehaviour {
 	private Vector2 startPos;
 
 	Move2DPlayer moveCharacter;
-	PlantManager managePlant;
+	PlantManagerTutorial managePlant;
 
 	//private float ScreenWidth;
 
@@ -40,12 +40,12 @@ public class TouchToPlant : MonoBehaviour {
 		}
 		isFreePos = true;
 		player = GameObject.Find("Player");
-		plantManager = GameObject.Find ("PlantManager");
+		plantManager = GameObject.Find ("PlantManagerTutorial");
 
 		isPlanting = false;
 
 		moveCharacter = player.GetComponent<Move2DPlayer> ();
-		managePlant = plantManager.GetComponent<PlantManager> ();
+		managePlant = plantManager.GetComponent<PlantManagerTutorial> ();
 	}
 
 	// Update is called once per frame
@@ -104,5 +104,6 @@ public class TouchToPlant : MonoBehaviour {
 
 	}
 }
+
 
 
